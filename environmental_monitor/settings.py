@@ -162,3 +162,48 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 THINGSPEAK_API_KEY = 'BKJARKFLF2TC9AHB'
 THINGSPEAK_CHANNEL_ID = '3088048'  # Replace with your actual channel ID
 THINGSPEAK_READ_API_KEY = 'M5B6JN6H10WCQ8KP'
+
+
+
+
+# settings.py (add these at the bottom)
+import os
+from decouple import config
+
+DEBUG = config('DEBUG', default=False, cast=bool)
+
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '.pythonanywhere.com',  # For PythonAnywhere
+    '.herokuapp.com',       # For Heroku
+    '.railway.app',         # For Railway
+    '.vercel.app',          # For Vercel
+    '.onrender.com',        # For Render
+]
+
+# Database
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
+# Static files
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Security settings
+SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
