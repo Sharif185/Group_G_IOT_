@@ -172,27 +172,14 @@ from decouple import config
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    '.pythonanywhere.com',  # For PythonAnywhere
-    '.herokuapp.com',       # For Heroku
-    '.railway.app',         # For Railway
-    '.vercel.app',          # For Vercel
-    '.onrender.com',        # For Render
-]
 
 # Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 
+#my changes
 # Static files
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
